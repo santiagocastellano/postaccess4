@@ -1,0 +1,194 @@
+  .card{
+        width:90%;
+        height:400px;
+  }
+    
+  .tituloBusqueda{
+    text-align: center;
+    background-color: #f1f1f1;
+    margin: 20px auto;
+  }
+  .enviarBusqueda, .centro{
+  
+    text-align: center;
+  
+    bottom:5px;
+  }
+
+  .textoBusqueda{
+    margin-left: 20px;
+    align: right;
+    width: 60%;
+  }
+
+  .opcionesBusqueda{
+    align: left;
+    width:30%;
+    }
+    .white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+ 
+    margin: 50px auto;
+    text-align: center;
+  }
+  @media screen and (max-width: 500px) {
+    .indice{
+    align:center;
+    width:100%;
+    }
+    .contenedor{
+      width:100%;
+      align:center;
+    }
+    .demo-gallery{
+      width:225px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+  }
+  @media screen and (min-width: 600px) {
+      .divgrid, .lightgallery{
+      width:90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .demo-gallery{
+      width:90%;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+    .white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: 50%;
+ 
+    margin: 50px auto;
+    text-align: center;
+    }
+}
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidenav a:hover {
+      color: #f1f1f1;
+  }
+
+  .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+   .contAceptarCancelar{
+     width: 100%;
+   }
+
+
+  .demo-card-wide.mdl-card {
+    width: 512px;
+  }
+  .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 100px;
+    
+  }
+  .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+  }
+  .mdl-textfield__label{  
+     margin-bottom:0px;
+   }
+  .mdl-typography--title, .mdl-typography--title-color-contrast {
+      font-family: "Roboto","Helvetica","Arial",sans-serif;
+      font-size: 10;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: .02em;
+  }
+  .nuser{
+    align-content: left;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+      font-size: 10;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: .02em;
+  }
+  .misDatos{
+    
+    /* Overflow Scroll */
+    overflow-y: scroll;
+    max-height: 300px;
+    padding:0 1em 0 0;
+
+  }
+
+  /* text-based popup styling */
+  .white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 25px;
+    width:auto;
+    max-width: 400px;
+    margin: 0 auto; 
+  }
+
+  .white-popup header{
+    border-bottom:1px dotted #ccc;
+    padding-bottom:.4em;
+    margin-bottom:.4em;
+  }
+  .popup-scroll{
+    /* Overflow Scroll */
+    overflow-y: scroll;
+    max-height: 300px;
+    padding:0 1em 0 0;
+  }
+
+  /* custom scrollbars - webkit only */
+  .popup-scroll::-webkit-scrollbar {background-color:#EEE;width:10px;}
+  .popup-scroll::-webkit-scrollbar-thumb {
+      border:1px #EEE solid;border-radius:2px;background:#777;
+      -webkit-box-shadow: 0 0 8px #555 inset;box-shadow: 0 0 8px #555 inset;
+      -webkit-transition: all .3s ease-out;transition: all .3s ease-out;
+      }
+  .popup-scroll::-webkit-scrollbar-track {-webkit-box-shadow: 0 0 2px #ccc;box-shadow: 0 0 2px #ccc;} 
+  th.mdl-data-table__cell--non-numeric.mdl-data-table__cell--non-numeric {
+    text-align: center;
+   width: 10px;
+  }
+  .non-numeric.mdl-data-table__cell--non-numeric {
+    text-align: center;
+  }
+  
