@@ -27,12 +27,18 @@ return [
 
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
+       
     ],
 
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+    'facebook' => [
+        'client_id' => '368142997260152',
+        'client_secret' => '22e1fa1a382d53f8ea5951cb1390a359',
+        'redirect' => 'http://localhost/postaccess4/public/autenticacion/facebook/callback'
     ],
 
 ];

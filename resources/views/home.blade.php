@@ -87,7 +87,7 @@
 
   </div>
 
-  <div id="geomPopup"  class="white-popup mfp-hide">
+  <div id="geomPopup" style="width:380px;height:auto;" class="white-popup mfp-hide">
 
     <h4 class="tituloBusqueda">Datos de Objeto</h4>
     <div id="mensajeError" style="display:none;color: red;" class="mensajeError"></div>
@@ -116,9 +116,9 @@
 
     <form action="{{ url('perfil/foto') }}" method="post" style="display: none" id="avatarForm2">
         {{ csrf_field() }}
-        <input type="file"  id="avatarInput2" name="photo2" onclick="this.value=null;">
+        <input type="file"  id="avatarInput2" name="photo2" accept="image/*" onclick="this.value=null;">
     </form>
-        <img style="width:300px " src="{{ asset('images/users/default3.jpg') }}" id="avatarImage2" >
+        <img  style="max-width:300px;height: 300px; " src="{{ asset('images/users/default3.jpg') }}" id="avatarImage2" >
 
 
     <div class="mdl-card__actions mdl-card--border">
@@ -197,7 +197,7 @@
        
       </li>
     </ul>
- <img style="width:300px " src="{{ asset('images/users/default3.jpg') }}" id="infoImage">
+ <img  style="max-width:300px;height: 300px; " src="{{ asset('images/users/default3.jpg') }}" id="infoImage">
 <!--<div style="width:300px;height:300px;align: center; " id="mapInfo" class="mapInfo"></div>-->
 
     <div class="mdl-card__actions mdl-card--border">
@@ -211,7 +211,7 @@
 
   <!--popup edicion -->
 
-   <div id="geomEdicion" style="width:390px;"  class="white-popup mfp-hide">
+   <div id="geomEdicion"   class="white-popup mfp-hide">
 
     <h4 class="tituloBusqueda">Datos de Objeto</h4>
     <div class="nuser" id="datosUsuario">Nusuario:   
@@ -245,7 +245,7 @@
         {{ csrf_field() }}
         <input type="file" id="avatarInput" name="photo" onclick="this.value=null;">
     </form>
-        <img style="width:300px " src="{{ asset('images/users/default3.jpg') }}" id="avatarImageInfo">
+        <img style="max-width:300px;height: 300px; " src="{{ asset('images/users/default3.jpg') }}" id="avatarImageInfo">
 
 
     <div class="mdl-card__actions mdl-card--border">
@@ -553,7 +553,7 @@
       function addImage(e){
         var file = e.target.files[0],
         imageType = /image.*/;
-      
+        
         if (!file.type.match(imageType)){
           console.log("matcheo");
          return;
@@ -574,7 +574,8 @@
 
       function addImage2(e){
         var file = e.target.files[0],
-        imageType = /image.*/;      
+        imageType = /image.*/;    
+        
         if (!file.type.match(imageType)){
           console.log("matcheo2");
          return; 
@@ -583,7 +584,7 @@
         reader.onload = fileOnload2;
         reader.readAsDataURL(file);
       }
-      function ajaxSubirImg(){ //subo la imagen solo cuando le doy aceptar al geompopup
+      function ajaxSubirImg(){ //subo la imagen solo cuando le doy aceptar al geomedicion
         $.ajax({
               url: $avatarForm2.attr('action') + '?' + $avatarForm2.serialize(),
               method: $avatarForm2.attr('method'),
@@ -597,6 +598,7 @@
               }
                
           }).fail(function () {
+            console.log("error de imagen");
               document.getElementById("mensajeError").style.display="";
               document.getElementById("mensajeError").innerHTML="El formato del archivo no es correcto, ingrese una imagen.";
               window.setTimeout(mensajeError, 3000);
@@ -617,6 +619,7 @@
               }
                
           }).fail(function () {
+console.log("error de imagendddd");
               document.getElementById("mensajeError").style.display="";
               document.getElementById("mensajeError").innerHTML="El formato del archivo no es correcto, ingrese una imagen.";
               window.setTimeout(mensajeError, 3000);
@@ -625,12 +628,19 @@
       } //fin subir img
 //tuve que hacer dos entradas de imagen porque sino una me influia en los nombres de imagen de la otra, en el caso de avatarimput2 lo que hago es disparar la carga de imagen con el boton aceptar ddel popup (ajaxsubirimg)
     $avatarInput2.on('change', function (e) { //esto captura el cambio de la imagen en el popup de creacion de geometria
-        
         var nombreAleatorio=Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10);
         nombreFotoCExtension=$avatarInput2[0].files[0].name; //detecto la extension del usuario
         var ext= nombreFotoCExtension.split('.')[1];
         nombreFoto=nombreAleatorio+"."+ext;//basicamente le cambio el nombre a la foto que ingresa el usuario
-        
+        var tipo=$avatarInput2[0].files[0].type;
+
+        var ext=getType(tipo);
+      if(ext=="error"){ //si no e suna imagen, salgo
+        document.getElementById("mensajeError").style.display="";
+        document.getElementById("mensajeError").innerHTML="El formato del archivo no es correcto, ingrese una imagen.";
+        window.setTimeout(mensajeError, 3000);
+        return false;
+      }
         formData = new FormData();
         formData.append('photo', $avatarInput2[0].files[0]);
         console.log("cambie nomb foto "+ nombreFoto);
@@ -829,6 +839,7 @@
          //no se borra el ultimo punto para que quede en la tesela
           map.removeInteraction(draw);
           addInteraction("None");  
+          refreshCapa();
 
         }else{ //el titulo es vacio
           document.getElementById("mensajeError").style.display="";
@@ -852,6 +863,15 @@
        // map.getView().animate({center: coords, zoom: 10});
      
     });
+    function refreshCapa(){
+      var sourcePuntos = mapaPuntos.getSource();
+      var sourceLineas=mapaLineas.getSource();
+      map.removeLayer(sourcePuntos); 
+      sourcePuntos.refresh({force: true});
+      map.removeLayer(sourceLineas); 
+      sourceLineas.refresh({force: true});
+      map.updateSize();
+    }
     j(".borrarGeomConfirmacion").click(function(){
       var idGeom=document.getElementById('hiddenIdGeom').value;
       var TypeGeom=document.getElementById('hiddenTypeGeom').value;
@@ -866,6 +886,7 @@
       closePopup();
       var data = {message: 'Geometria borrada con exito '};
       snackbarContainer.MaterialSnackbar.showSnackbar(data);
+      refreshCapa();
     });
     j(".borrarGeomBD").click(function(){
       j.magnificPopup.open({
@@ -1028,9 +1049,11 @@
         var lineas=false;
         if(tipoGeom=="puntos"){
           fuente=mapaPuntos.getSource();
+          console.log("son puntos");
         }else{
           fuente=mapaLineas.getSource();
           lineas=true;//si entro a este else entonces la consulta es sobre lineas
+          console.log("son lineas");
         }
         
         var url=tomarCapa(fuente);

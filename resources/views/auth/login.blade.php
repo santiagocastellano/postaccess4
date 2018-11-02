@@ -59,6 +59,9 @@
                             </div>
                         </div>
 
+
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -69,6 +72,20 @@
                                     {{ __('¿Olvidó su palabra clave?') }}
                                 </a>
                             </div>
+                        </div>
+
+                         <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                            <br>
+                            <div class="formO">- o -</div>
+                                <a class="btn btn-primary centrar fondoFacebook" href="{{ route('social.provider', 'facebook') }}">
+                                    Iniciar sesión con Facebook
+                                </a> 
+                                <a class="btn btn-primary centrar fondoGoogle" href="{{ route('social.provider', 'facebook') }}">
+                                    Iniciar sesión con Google
+                                </a> 
+                            </div>
+                           
                         </div>
                     </form>
                 </div>

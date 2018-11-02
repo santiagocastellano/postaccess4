@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Notifications\ResetPass;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'avatar','password','provider','provider_id',
     ];
 
     /**
@@ -31,7 +31,7 @@ class User extends Authenticatable
         return $this->hasOne('App\VerifyUser');
     }
 
-   
+  
     
     public function getAvatarUrl()
     {

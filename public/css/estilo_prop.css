@@ -1,8 +1,64 @@
-  .card{
-        width:90%;
-        height:400px;
-  }
+ 
+  .centrar{
+    margin-top: 10px;
+    display:block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     
+  }
+  .formO{
+    
+    text-align: center;
+    font-family: Georgia,Times New Roman,serif;
+    font-style: italic;
+    opacity: .5;
+    font-weight: 300;
+    color: #9fa3a9;
+
+  }
+  .fondoReg{
+    margin-bottom: 10px;
+    background-color: rgb(233, 124, 51);
+    border-color: rgb(233, 124, 51);
+    
+  }
+  .fondoReg:hover{
+    background-color: rgb(212, 91, 10);
+    border-color: rgb(241, 116, 32);
+  }
+  .fondoFacebook{
+    background-color: #3b5998;
+    border-color: #3b5998;
+    background-image: url("https://static.canva.com/static/images/facebook_button_icon.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+  }
+  .fondoFacebook:hover{
+    background-color: #273f72;
+    border-color: #3b5998;
+  }
+  .avatar{
+    width: 30px; height: 30px;
+    background-image:url("http://localhost/postaccess4/public/images/users/Portrait_Placeholder.png");
+  }
+  .fondoGoogle{
+    background-color: #dd4b39;;
+    border-color: #dd4b39;
+    background-image: url("https://static.canva.com/static/images/google_button_icon.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+  }
+  .fondoGoogle:hover{
+    background-color: #d42e18;;
+    border-color: #dd4b39;
+  }
+  #content form input[type="submit"] {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+}
   .tituloBusqueda{
     text-align: center;
     background-color: #f1f1f1;

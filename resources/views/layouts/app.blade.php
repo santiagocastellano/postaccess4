@@ -45,6 +45,7 @@
 
 </div>
     <div id="app" >
+        
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container" >
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -53,7 +54,11 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <span style="font-size:15px;cursor:pointer;margin-left: 20px" id="spanMenu" onclick="openNav()">Menu </span>
+                @guest
+                
+                @else
+                    <span style="font-size:15px;cursor:pointer;margin-left: 20px" id="spanMenu" onclick="openNav()">Menu </span>
+                @endguest
 <!--icono menu &#9776;-->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -77,7 +82,7 @@
 
                             
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <img class="avatar" src="{{ Auth::user()->avatar }}" alt="" onerror=this.src="{{ asset('images/users/Portrait_Placeholder.png') }}" >  {{ Auth::user()->name }} <span class="caret"> </span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -106,8 +111,7 @@
        
     </div>
 
-
-<div id="copyright text-right"> &nbsp © MMXVIII Derechos Reservados - Santiago Castellano</div>
+<div class="panel-footer"> &nbsp © MMXVIII Derechos Reservados - Santiago Castellano</div>
 </body>
 
 </html>

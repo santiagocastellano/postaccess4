@@ -59,15 +59,26 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                            
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                
+                                <button type="submit"  class="btn btn-primary centrar fondoReg">
                                     {{ __('Registrar') }}
                                 </button>
+                                <div class="formO">- o -</div>
+                                <a class="btn btn-primary centrar fondoFacebook" href="{{ route('social.provider', 'facebook') }}">
+                                    Iniciar sesión con Facebook
+                                </a> 
+                                <a class="btn btn-primary centrar fondoGoogle" href="{{ route('social.provider', 'facebook') }}">
+                                    Iniciar sesión con Google
+                                </a> 
                             </div>
+                           
                         </div>
+                        
                     </form>
                 </div>
             </div>
